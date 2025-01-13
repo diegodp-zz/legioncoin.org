@@ -1,0 +1,284 @@
+@import "colors";
+
+$nav-height: 3rem;
+$input-remove-width: 2.5rem; //width of the clear input button
+
+.Nav-bar {
+    box-sizing: border-box;
+    padding: .5rem;
+    height: $nav-height;
+    background-color: $secondary-background-color; //fallback for unsupported values
+    background-color: var(--secondary-background-color);
+    position: fixed;
+    width: 100vw;
+    top:0;
+    text-align: left;
+    color: $primary-font-color;
+    color: var(--primary-font-color);
+    // line-height: $nav-height;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    z-index: 1;
+
+    .Song-input {
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        background-color: $secondary-background-color;
+        background-color: var(--secondary-background-color);
+        position: sticky;
+        top:0;
+        z-index: 1;
+
+        input {
+            border-radius: .5rem;
+            border: none;
+            box-shadow: $text-shadow;
+            box-shadow: var(--text-shadow);
+            font-size: inherit;
+            min-width: 100%;
+            padding: .5rem;
+            padding-right: $input-remove-width;
+            box-sizing: border-box;
+            font-size: 1.5rem;
+
+            background-color: $primary-background-color;
+            background-color: var(--primary-background-color);
+
+            color: $tertionary-font-color;
+            color: var(--tertionary-font-color);
+
+            position: relative;
+        }
+
+        .remove {
+            position: absolute;
+            right: 0rem;
+            top: 1rem;
+            bottom: 1rem;
+            padding: .5rem 0;
+            width: $input-remove-width;
+            text-align: center;
+            cursor: pointer;
+            box-sizing: border-box;
+            background-color: rgba(0,0,0, .05);
+            border-radius: 0 .5rem .5rem 0;
+            border-left: solid 2px rgba(0,0,0, .1);
+        }
+        
+    }
+
+    .Expand-icon div {
+        height: .17em;
+        width: 1em;
+        background: white;
+        background: var(--primary-font-color);
+        transition: transform .15s cubic-bezier(.68,-0.55,.27,1.55);
+
+        &, &::before, &::after {
+            box-shadow: $text-shadow;
+            box-shadow: var(--text-shadow);
+            background-color: $primary-font-color;
+            background: var(--primary-font-color);
+        }
+
+        &::before, &::after {
+            content: "";
+            display: block;
+            height: 100%;
+            position: relative;
+        }
+
+        &::after {
+            top: 100%;
+        }
+
+        &::before {
+            bottom: 200%;
+        }
+
+        &.open {
+            transform: rotate(90deg);
+            &, &::before, &::after {
+                box-shadow: $text-shadow;
+                box-shadow: var(--text-shadow);
+            }
+        }
+    }
+
+    .Expand-icon {
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-right: .5em;
+    }
+}
+
+.Table-of-contents .content h1 {
+    text-align: center; /* Center the letters */
+    margin: 1rem 0; /* Add some margin for spacing */
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
+  
+  .Table-of-contents .content p {
+    margin-left: 1rem; /* Indent song titles slightly */
+    cursor: pointer; /* Make it clear the items are clickable */
+  }
+  
+.Table-of-contents {
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    margin-top: $nav-height;
+    height: calc(100vh - #{$nav-height});
+    
+    box-sizing: border-box;
+    word-wrap: break-word;
+    width: 100vw;
+    padding: 0;
+    background-color: rgba(0,0,0, .5);
+
+    //the actual sidebar
+    & > div.content {
+        border-top: 2px solid rgba(0,0,0, .3);
+        background-color: $secondary-background-color; //fallback for unsupported values
+        background-color: var(--secondary-background-color);
+        margin-top: 0;
+        overflow-y: scroll;
+        height: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
+        width: 100vw;
+        z-index: 1;
+    }
+
+    //the section header
+    div > h1 {
+        text-align: center;
+        position: relative;
+        z-index: 0;
+        user-select: none;
+
+        & > span {
+            position: relative;
+            display: inline-block;
+            width: 2ch;
+            text-align: center;
+            color: $primary-font-color;
+            color: var(--primary-font-color);
+            
+            &::after {
+                z-index: -1;
+                content: "";
+                display: block;
+                width: 100%;
+                height: 50%;
+                position: absolute;
+                top: 25%;
+                right: -100%;
+                transform: translateX(-50%);
+                padding: 0 1rem;
+                background-color: $secondary-background-color; //fallback for unsupported values
+                background-color: var(--secondary-background-color);
+            }
+        }
+
+        &::before {
+            z-index: -1;
+            background-color: $secondary-font-color;
+            background-color: var(--secondary-font-color);
+            content: "";
+            display: block;
+            width: 100%;
+            height: 50%;
+            position: absolute;
+            top: 25%;
+            right: 0;
+        }
+    }
+
+    //the song (including song number)
+    div > p {
+        cursor: pointer;
+        color: $secondary-font-color;
+        color: var(--secondary-font-color);
+        user-select: none;
+
+        &:last-child {
+            margin-bottom: 5rem;
+        }
+    }
+
+    //the song number
+    div p span {
+        color: $tertionary-font-color;
+        color: var(--tertionary-font-color);
+        font-size: 2rem;
+        text-shadow: 1.5px 1.5px 2px #111;
+        text-shadow: var(--text-shadow);
+        font-weight: 900;
+
+        user-select: none;
+    }
+}
+
+.dark-mode-switch {
+    width: 100%;
+    text-align: center;
+    padding-top: 1rem;
+    
+    button {
+        box-sizing: border-box;
+        height: 3rem;
+        border-radius: 10px;
+
+        border: 3px solid $primary-background-color;
+        background-color: $primary-background-color;
+        color: $primary-font-color;
+        box-shadow: $text-shadow;
+
+        border: 3px solid var(--primary-background-color);
+        background-color: var(--primary-background-color);
+        color: var(--primary-font-color);
+        box-shadow: var(--text-shadow);
+        
+
+        &:hover {
+            background-color: $secondary-background-color;
+            background-color: var(--secondary-background-color);
+            
+        }
+    }
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  
+    a {
+      color: black; /* Change this to black */
+      text-decoration: none;
+  
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+}
+
+
+@media (min-width: 600px) {
+    .Table-of-contents {
+        & > div.content {
+            width: 20em;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "partykit-chat",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev-party": "npx concurrently \"npm run dev\" \"npm run party\"",
+    "party": "rm -rf ./tmp/test && partykit dev ./src/server/server.ts --persist ./tmp/test",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@types/node": "20.4.5",
+    "@types/prop-types": "^15.7.12",
+    "@types/react": "18.2.17",
+    "@types/react-dom": "18.2.7",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.46.0",
+    "eslint-config-next": "13.4.12",
+    "howler": "^2.2.4",
+    "next": "^14.2.4",
+    "partykit": "^0.0.0-fffe721",
+    "partysocket": "^0.0.0-fffe721",
+    "postcss": "^8.4.38",
+    "prop-types": "^15.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^5.2.1",
+    "sass": "^1.77.6",
+    "tailwindcss": "3.3.3",
+    "typescript": "5.1.6",
+    "usehooks-ts": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/howler": "^2.2.11",
+    "daisyui": "^3.5.1"
+  }
+}

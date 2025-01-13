@@ -1,0 +1,186 @@
+@import "colors";
+
+$max-song-width: min(40rem, 80%);
+
+.song {
+    background-color: $primary-background-color;
+    background-color: var(--primary-background-color);
+    color: $tertionary-font-color;
+    color: var(--tertionary-font-color);
+    text-align: left;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 2em;
+    border-radius: 2em;
+    box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, .15);
+
+    h1 {
+        color: $secondary-font-color;
+        color: var(--secondary-font-color);
+        margin: 0;
+        text-shadow: 1.5px 1.5px 2px #111;
+        text-shadow: var(--text-shadow);
+        font-weight: 600;
+    }
+
+    h1 span {
+        font-weight: 900;
+    }
+
+    span p:last-child {
+        margin-bottom: 0;
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+
+        .play-pause-button,
+        .stop-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: $secondary-font-color;
+            color: var(--secondary-font-color);
+            margin: 0 10px;
+
+            &:hover {
+                color: $primary-color;
+                color: var(--primary-color);
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                color: #ccc;
+            }
+        }
+
+        .seek-bar {
+            flex-grow: 1;
+            margin: 0 10px;
+
+            label {
+                display: none;
+            }
+
+            input[type="range"] {
+                width: 100%;
+            }
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+
+            label {
+                margin-right: 5px;
+                display: none;
+            }
+
+            input[type="range"] {
+                width: 100px;
+                margin-left: 5px;
+            }
+        }
+    }
+
+}
+
+body {
+    background-color: $primary-background-color;
+    background-color: var(--primary-background-color);
+}
+
+.All-songs {
+    margin-top: 3rem;
+    height: calc(100vh - 3rem);
+    overflow-y: scroll;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    box-sizing: border-box;
+
+    background-attachment: local;
+    background-size: 1em;
+
+    gap: 1.25rem 2.5rem;
+    padding: 0.625rem 1.25rem;
+
+    &>* {
+        width: 100%;
+        display: block;
+        text-align: left;
+        box-sizing: border-box;
+    }
+
+    &:first-child {
+        padding: 1.25rem;
+    }
+}
+
+.custom-scrollbar {
+    scrollbar-color: $secondary-background-color $primary-background-color;
+    scrollbar-color: var(--secondary-background-color) var(--primary-background-color);
+
+    &::-webkit-scrollbar-track {
+        background: $primary-background-color;
+        background: var(--primary-background-color);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $secondary-background-color;
+        background-color: var(--secondary-background-color);
+        border-radius: 50%;
+    }
+}
+
+.loaded-songs {
+    margin-top: 2rem;
+    padding: 1em;
+    background-color: $primary-background-color;
+    background-color: var(--primary-background-color);
+    color: $secondary-font-color;
+    color: var(--secondary-font-color);
+    border-radius: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    h3 {
+        margin-bottom: 1em;
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            padding: 0.5em 0;
+            border-bottom: 1px solid $secondary-background-color;
+            border-bottom: 1px solid var(--secondary-background-color);
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: lighten($secondary-background-color, 10%);
+                background-color: var(--secondary-background-color-hover);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .All-songs {
+        &>* {
+            max-width: $max-song-width;
+            min-width: 0;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+node_modules/
+.cache/
+.next
+.tmp
+src/gatsby-types.d.ts
+/.next
+/tmp
+/.next
+/.next
+/.next

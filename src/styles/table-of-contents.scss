@@ -1,0 +1,54 @@
+/* app/styles/table-of-contents.scss */
+
+.Table-of-contents {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .Table-of-contents .content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .Table-of-contents p {
+    margin: 0.5rem 0;
+    cursor: pointer;
+    color: #0070f3;
+  }
+  
+  .Table-of-contents p:hover {
+    text-decoration: underline;
+  }
+  
+  .Table-of-contents h1 {
+    font-size: 1.25rem;
+    margin: 1rem 0 0.5rem;
+  }
+  
+  .Table-of-contents .Song-input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .Table-of-contents .Song-input input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .Table-of-contents .remove {
+    cursor: pointer;
+    padding: 0 0.5rem;
+    color: #999;
+  }
+  
+  .Table-of-contents .remove:hover {
+    color: #333;
+  }
+  
